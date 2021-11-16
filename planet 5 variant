@@ -1,0 +1,104 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Planet {
+    private final String name;
+
+    private final List<Ocean> oceanList = new ArrayList<>();
+    private final List<Continent> continentList = new ArrayList<>();
+    private final List<Island> islandList = new ArrayList<>();
+
+    public Planet(String name) {
+        this.name = name;
+    }
+
+    public void addOcean(Ocean ocean) {
+        oceanList.add(ocean);
+    }
+
+    public void addContinent(Continent continent) {
+        continentList.add(continent);
+    }
+
+    public void addIsland(Island island) {
+        islandList.add(island);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Ocean> getOceanList() {
+        return oceanList;
+    }
+
+    public List<Continent> getContinentList() {
+        return continentList;
+    }
+
+    public List<Island> getIslandList() {
+        return islandList;
+    }
+}public class Continent {
+    private String name;
+
+    public Continent(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+public class Island {
+    private String name;
+
+    public Island(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+public class Ocean {
+    private String name;
+
+    public Ocean(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+import java.util.List;
+
+public class PlanetRunner {
+    public static void main(String[] args) {
+        Island island = new Island("Barbados");
+
+        Planet planet = new Planet("Earth");
+
+        planet.addContinent(new Continent("Eurasia"));
+        planet.addContinent(new Continent("Africa"));
+
+        planet.addOcean(new Ocean("Atlantic"));
+        planet.addOcean(new Ocean("Pacific"));
+
+        planet.addIsland(new Island("Barbados"));
+
+        System.out.println("Planet name: "+planet.getName());
+        System.out.println("Continent name: "+getFirstContinentName(planet.getContinentList()));
+        System.out.println("Count continents:" + planet.getContinentList());
+    }
+
+    public static String getFirstContinentName(List<Continent> continentList) {
+        String result = null;
+        for (Continent continent: continentList) {
+            result = continent.getName();
+        }
+
+        return result;
+    }
+}
